@@ -47,7 +47,17 @@ $(function() {
         )});
     });
 
-
+describe('The menu', function() {
+    it('menu hidden by default', function () {
+        const body = document.querySelector('body');
+        expect(body.classList.contains('menu-hidden')).toBe(true);
+    })
+});
+    
+    
+    
+    
+    
     /* TODO: Write a new test suite named "The menu" */
 
         /* TODO: Write a test that ensures the menu element is
