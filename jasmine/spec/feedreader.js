@@ -51,7 +51,17 @@ describe('The menu', function() {
     it('menu hidden by default', function () {
         const body = document.querySelector('body');
         expect(body.classList.contains('menu-hidden')).toBe(true);
-    })
+    });
+
+    it('menu on and off', function () {
+        const body = document.querySelector('body');
+        const menu = document.querySelector('.menu-icon-link');
+
+        menu.click();
+        expect(body.classList.contains('menu-hidden')).toBe(false);
+    });
+
+   
 });
     
     
