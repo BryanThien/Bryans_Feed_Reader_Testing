@@ -40,7 +40,7 @@ $(function() {
         )});
 
         it('name defined', () => {
-            allFeeds.forEach(function(thisFeed) {
+            allFeeds.forEach((thisFeed) => {
                 expect(thisFeed['name']).toBeDefined();
                 expect(thisFeed['name'].length).not.toEqual(0);
             }
@@ -59,10 +59,20 @@ describe('The menu', () => {
 
         menu.click();
         expect(body.classList.contains('menu-hidden')).toBe(false);
+    });  
+});
+
+describe('Initial Entries', () => {
+
+    beforeEach((done) => {
+        loadFeed(0, done);
     });
 
-   
-});
+    it('complete work', () => {
+        const feed = document.querySelector('.feed');
+        expect(feed.children.length > 0).toBe(true);
+    });
+}); 
     
    
     
