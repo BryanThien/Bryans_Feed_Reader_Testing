@@ -21,7 +21,7 @@ $(function() {
          * allFeeds in app.js to be an empty array and refresh the
          * page?
          */
-        it('are defined', () => {
+        it('allFeeds is defined and not empty', () => {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
@@ -32,14 +32,14 @@ $(function() {
          * and that the URL is not empty.
          */
         
-        it('has url', () => {
+        it('feed has url', () => {
             allFeeds.forEach((thisFeed) => {
                 expect(thisFeed.url).toBeDefined();
                 expect(thisFeed.url).not.toBe(null);
             }
         )});
 
-        it('name defined', () => {
+        it('feed name is defined', () => {
             allFeeds.forEach((thisFeed) => {
                 expect(thisFeed['name']).toBeDefined();
                 expect(thisFeed['name'].length).not.toEqual(0);
@@ -53,7 +53,7 @@ describe('The menu', () => {
         expect(body.classList.contains('menu-hidden')).toBe(true);
     });
 
-    it('menu on and off', () => {
+    it('menu appears when icon is clicked', () => {
         const body = document.querySelector('body');
         const menu = document.querySelector('.menu-icon-link');
 
@@ -68,29 +68,30 @@ describe('Initial Entries', () => {
         loadFeed(0, done);
     });
 
-    it('complete work', () => {
+    it('at least one entry found when done', () => {
         const feed = document.querySelector('.feed');
         expect(feed.children.length > 0).toBe(true);
     });
 }); 
     
-   
-    
-    
-   
-    /* TODO: Write a new test suite named "Initial Entries" */
+describe('New Feed Selection', () => {
+   let feedOne,
+       feedTwo;
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+       beforeEach(done => {
+           loadFeed(0, () => {
+               feedOne = document.querySelector('.feed').innerHTML;
+               done();
+           });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+           loadFeed(1, () => {
+               feedTwo = document.querySelector('.feed').innerHTML;
+               done();
+           })
+       });
 
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+    it('content changes when new feed is loaded', () => {
+       expect(feedOne === feedTwo).toBe(false);
+    });
+});
 }());
