@@ -47,6 +47,8 @@ $(function() {
         )});
     });
 
+// Checks if the menu is hidden by default when opening the webpage
+// Checks if the menu hides and appears when menu icon is clicked
 describe('The menu', () => {
     it('menu hidden by default', function () {
         const body = document.querySelector('body');
@@ -61,7 +63,7 @@ describe('The menu', () => {
         expect(body.classList.contains('menu-hidden')).toBe(false);
     });  
 });
-
+// Makes sure at least one feed entry is found in the feed class div container in the html
 describe('Initial Entries', () => {
 
     beforeEach((done) => {
@@ -73,7 +75,7 @@ describe('Initial Entries', () => {
         expect(feed.children.length > 0).toBe(true);
     });
 }); 
-    
+// Makes sure when the loadFeed function runs the content changes  
 describe('New Feed Selection', () => {
    let feedOne,
        feedTwo;
