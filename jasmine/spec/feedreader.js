@@ -67,13 +67,12 @@ describe('The menu', () => {
 // Makes sure at least one feed entry is found in the feed class div container in the html
 describe('Initial Entries', () => {
 
-    beforeEach((done) => {
+    beforeEach(done => {
         loadFeed(0, done);
     });
 
     it('at least one entry found when done', () => {
-        const feed = document.querySelector('.feed');
-        expect(feed.children.length > 0).toBe(true);
+        expect($(".feed .entry").length).toBeGreaterThan(0);
     });
 }); 
 // Makes sure when the loadFeed function runs the content changes  
